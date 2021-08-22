@@ -1,0 +1,34 @@
+{% extends 'mainsite/index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div>
+<!--                | means OR operator-->
+            <strong>{{message|safe}}</strong>
+        </div>
+
+    {% endfor %}
+    <button type="button" class="btn btn-danger" onClick="window.location.reload();">Refresh the page</button>
+    {% else %}
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Make sure your csv doesn't exceed 250mb!</label>
+      <br>
+
+<form action = "{% url 'mainsite:model_form_upload' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+<!-- <input type="file" name="myfile"> -->
+{{ form.as_p }}
+<button type="submit" class="btn btn-dark" >Upload</button>
+</form>
+{% endif %}
+
+<!-- {% if model_form_upload %}
+<p>File uploaded at: <a href="{{ form }}">{{ mainsite }}</a></p>
+{% endif %} -->
+
+{% endblock content %}

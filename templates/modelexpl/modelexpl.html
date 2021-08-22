@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Model Explanation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static  "CSS/Index.css" %}">
+    <link rel="stylesheet" href="{% static  "CSS/expl.css" %}">
+
+    <script defer src="{% static 'JS/eventscript2.js' %}"></script>
+
+    <script defer src = "{% static "JS/swup.min.js"%}" ></script>
+    <script defer src = "{% static "JS/myswup.js" %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static  "CSS/swup.css" %}">
+  </head>
+  <body>
+
+
+
+
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow"> -->
+      <nav class="navbar navbar-expand-lg navbar-light  static-top mb-5 shadow" style="background-color: #F5F5F5;">
+      <div class="container">
+        <a class="navbar-brand" href="/">Neural Network App by Marcin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/explanation">Model Explanation</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <main id ="swup" class="transition-fade">
+    <!-- Page Content -->
+    <div class="container">
+      <div class="card border-0 shadow my-3" style="background-color: #F5F5F5;">
+        <div class="card-body p-4">
+          <h1 class="fw-light">Neural Network Algorithm </h1>
+
+          <button type="button" class="btn btn-success" onClick="window.location.reload();">Make interactive!</button>
+
+
+          <p class="lead">My algorithm is programmed from scratch in Python.
+            It is constructed from the initial hidden layer, specified amount of hidden layers and an output layer. It creates randomised weights, that then are updated with the learning rate being 0.01.
+</p>
+<div class="content">
+  <img src="{% static "CSS/Picture1.png"%}" class="img-fluid" alt="Responsive image" id = "image1">
+
+</div>
+<br>
+<br>
+
+<p class="lead">Each iteration goes through forward and back propagations.
+</p>
+
+<h3>Forward propagation</h3>
+
+
+<p class="lead">Here the prediction of outputs is calculated. In the code that starts with matrix or all hidden layers. Data propagates from the input layer, throughout the output layer.
+</p>
+<p class="lead">Each neuron’s output is a logistic unit with Sigmoid activation function, where x is dot product of features and weights, plus arbitrary bias.
+</p>
+
+<div class="content">
+
+<img src="{% static "CSS/Picture2.png"%}" class="img-fluid" alt="Responsive image" id = 'image2'>
+</div>
+
+
+<h3>Backward propagation</h3>
+
+
+<p class="lead">Here, the ‘reversed’ iterator is used to back-propagate through neural network.
+Every time error is updated and appended to error list. Hidden neuron number j is index of the neuron’s weights.
+Error signal is computed with the derivative of our sigmoid function.</p>
+
+<p class="lead">The process is repeated until convergence, using gradient descent algorithm. Standard learning rate for this model is currently 0.01
+
+</p>
+
+
+
+
+<p class="lead">Here the prediction of outputs is calculated. In the code that starts with matrix or all hidden layers. Data propagates from the input layer, throughout the output layer.
+</p>
+
+
+<p class="lead">Gradient descent can only find local minima/maxima, because the current form is not possible to analyse analytically (same as we cannot differentiate logistic regression, because of its Maximum Likelihood error finding solution). Each iteration of gradient descent updates the weights by delta time learning rate.
+Delta here is constructed of product of error  and derivative of our neuron’s output function, in the literature this is computed often with the chain rule (see example below) but for simplicity I included another function (hower your mouse over that screenshot to display)
+</p>
+
+<div class="content">
+<img src="{% static "CSS/Picture4.png"%}" class="img-fluid" alt="Responsive image" id = 'image3'>
+</div>
+
+
+<p class="lead">Gradient descent here is working iteratively
+</p>
+
+<br>
+<div class="content">
+<img src="{% static "CSS/Picture7.png"%}" class="img-fluid" alt="Responsive image" id = 'image4'>
+</div>
+
+
+
+
+          <!-- <div style="height: 250px width: 200px"></div> -->
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h3>Final output</h3>
+
+          <p class="lead mb-0">Thanks for reading!</p>
+        </div>
+      </div>
+    </div>
+
+<small>
+<i> Picture sources and references: </i></small>
+<small>
+<i> Atsushi Konno, Neural Network Based Tuning Algorithm for MPID Control </i></small>
+<br>
+<small>
+<i> https://medium.com/@qempsil0914/courseras-machine-learning-notes-week5-neural-network-lost-function-forward-and-backward-8b293401e4dc
+ </i></small>
+
+  </main>
+
+
+  </body>
+</html>
