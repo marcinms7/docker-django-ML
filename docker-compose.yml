@@ -4,9 +4,6 @@ services:
   web:
     build: .
     restart: on-failure
-    command: 
-      - python3 manage.py migrate
-      - python3 autoadmin.py
-      - python3 manage.py runserver 0.0.0.0:8000
+    command: bash -c "python3 manage.py migrate && python3 autoadmin.py && python3 manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
