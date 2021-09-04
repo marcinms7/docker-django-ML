@@ -14,9 +14,13 @@
     {% else %}
 
 
-<h1 id = 'one'>LOADING MODEL</h1>
-
+<!-- Creating loader -->
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
 <script src="{% static 'JS/eventscript.js' %}"></script>
+
+<h1 id = 'one'>Model Applied Successfully</h1>
+
 
 <h3 id = 'one'>Model's Accuracy: {{auc}}</h3>
 
@@ -27,6 +31,8 @@
   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 </svg> Download Processed file</button>
 
+
+</div>
 
 
 
