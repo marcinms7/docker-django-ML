@@ -60,9 +60,11 @@
 
           <button type="button" class="btn btn-success" onClick="window.location.reload();">Make interactive!</button>
 
+          <p style="font-size:9px;">After clicking this button, you can hover over pictures to see the source code.</p>
 
-          <p class="lead">My algorithm is programmed from scratch in Python.
-            It is constructed from the initial hidden layer, specified amount of hidden layers and an output layer. It creates randomised weights, that then are updated with the learning rate being 0.01.
+
+          <p class="lead">Algorithm used in this Web Application is programmed 'from scratch', using only linear algebra and mathematics, without using any external libraries.
+            It is constructed from the initial layer, a specified amount of hidden layers, and an output layer. It creates randomised weights, which are then updated with the default learning rate being 0.01.
 </p>
 <div class="content">
   <img src="{% static "CSS/Picture1.png"%}" class="img-fluid" alt="Responsive image" id = "image1">
@@ -72,15 +74,23 @@
 <br>
 
 <p class="lead">Each iteration goes through forward and back propagations.
+  The model is known to be based on a simplified brain/neurons structure, where there are activated or inactivated neurons connected with synapses.
 </p>
 
 <h3>Forward propagation</h3>
 
 
-<p class="lead">Here the prediction of outputs is calculated. In the code that starts with matrix or all hidden layers. Data propagates from the input layer, throughout the output layer.
+<p class="lead">Here, the prediction of outputs is calculated. In the code that starts with a matrix of all hidden layers. Data propagates from the input layer, throughout the hidden layers, all the way to the output layer.
 </p>
-<p class="lead">Each neuron’s output is a logistic unit with Sigmoid activation function, where x is dot product of features and weights, plus arbitrary bias.
+<p class="lead">Inputs would travel through the neurons, with values from connected neurons being multiplied by 'weight' variable, determining the connection between the two neurons.
+
 </p>
+
+<p class="lead">Each neuron’s output is a logistic unit with a Sigmoid activation function, where x is the dot product of features and weights, plus arbitrary bias.
+</p>
+<p class="lead">That is done for all connected neurons, and passed to another layer until the output, which is a sum of those products.
+</p>
+
 
 <div class="content">
 
@@ -91,23 +101,19 @@
 <h3>Backward propagation</h3>
 
 
-<p class="lead">Here, the ‘reversed’ iterator is used to back-propagate through neural network.
-Every time error is updated and appended to error list. Hidden neuron number j is index of the neuron’s weights.
+<p class="lead">Here, the ‘reversed’ iterator is used to back-propagate through the neural network.
+In my algorithm, with every iteration, the error is updated and appended to the errors list. Hidden neuron number j is index of the neuron’s weights.
 Error signal is computed with the derivative of our sigmoid function.</p>
 
-<p class="lead">The process is repeated until convergence, using gradient descent algorithm. Standard learning rate for this model is currently 0.01
+<p class="lead">The process is repeated until convergence, using a gradient descent algorithm. Standard learning rate for this model is currently 0.01
 
 </p>
 
 
 
 
-<p class="lead">Here the prediction of outputs is calculated. In the code that starts with matrix or all hidden layers. Data propagates from the input layer, throughout the output layer.
-</p>
-
-
-<p class="lead">Gradient descent can only find local minima/maxima, because the current form is not possible to analyse analytically (same as we cannot differentiate logistic regression, because of its Maximum Likelihood error finding solution). Each iteration of gradient descent updates the weights by delta time learning rate.
-Delta here is constructed of product of error  and derivative of our neuron’s output function, in the literature this is computed often with the chain rule (see example below) but for simplicity I included another function (hower your mouse over that screenshot to display)
+<p class="lead">Gradient descent can only find the local minima/maxima, because the current form is not possible to be solved analytically (same as we cannot solve logistic regression analytically, because of its Maximum Likelihood error method). Each iteration of gradient descent updates the weights by delta times learning rate.
+Delta here is constructed of a product of error and a derivative of our neuron’s output function, in the literature this is computed often with the chain rule (see example below) but for a simplicity I included another function (hover your mouse over that screenshot to display)
 </p>
 
 <div class="content">
@@ -134,8 +140,33 @@ Delta here is constructed of product of error  and derivative of our neuron’s 
           <br>
           <br>
           <h3>Final output</h3>
+          <p class="lead">The model is trained on many inputs that come out of each iteration, recognising patterns and learning over time.
+             Assigned weights help to decide which nodes are more or less important.
+             </p>
+          <p class="lead mb-0">In summary, each neuron uses an activation function applied to the weighted sum of the outputs from the preceding layer of the neural network.
+          Then with our cost function, the network is being trained for n iterations, with each trying to minimise the error from each prediction.
+          With many epochs, towards the final iterations the weights either stop changing completely or would change only insignificantly.
+       </p>
+       <br>
 
-          <p class="lead mb-0">Thanks for reading!</p>
+       <p class="lead mb-0">After the model is trained, it can be used to predict any new data.
+    </p>
+    <br>
+
+    <p class="lead mb-0">After the training, I have measured accuracy of the model, based on a held-out test data, using AUC.
+  AUC is an area under the ROC curve, which basically plots True Positive Rate on the y-axis and False Positive Rate on the x-axis.
+  True Positive Rate (TPR) is measured by dividing True Positive rate (actually predicted records) by the sum of TP and FN (False Negative).
+  False Positive Rate (FPR) is defined as FP (False Positive) divided by the sum of FP and TN (True Negative).
+  </p>
+<br>
+  <p class="lead mb-0">AUC is a metric falling between 0 and 1, from completely wrong to completely accurate predictions.
+    With an AUC of 1, there is a high chance of a data leak present (or incorrect classifiers having all the same value).
+</p>
+
+<br>
+<br>
+
+          <p class="lead mb-0">Thanks for reading! You can test the model yourself now :)</p>
         </div>
       </div>
     </div>
